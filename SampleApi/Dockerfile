@@ -4,9 +4,9 @@ EXPOSE 80
 
 FROM microsoft/aspnetcore-build:2.0 AS build
 WORKDIR /src
-COPY SampleApi.API/SampleApi.API.csproj SampleApi.API/
-RUN dotnet restore SampleApi.API/SampleApi.API.csproj
 COPY . .
+RUN dotnet restore SampleApi.API/SampleApi.API.csproj
+
 WORKDIR /src/SampleApi.API
 RUN dotnet build SampleApi.API.csproj -c Release -o /app
 
