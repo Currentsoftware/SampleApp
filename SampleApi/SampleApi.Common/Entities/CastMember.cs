@@ -20,6 +20,6 @@ namespace SampleApi.Common.Entities
         /// <summary>
         /// Gets or sets the birthdate
         /// </summary>
-        public DateTime Birthdate { get; set; }
+        public DateTime? Birthdate { get; set; }
     }
 }

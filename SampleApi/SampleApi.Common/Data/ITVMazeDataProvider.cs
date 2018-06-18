@@ -9,6 +9,12 @@ namespace SampleApi.Common.Data
     public interface ITVMazeDataProvider
     {
         /// <summary>
+        /// Gets all shows
+        /// </summary>
+        /// <returns>A List of Show objects</returns>
+        List<Show> GetAllShows();
+
+        /// <summary>
         /// Gets the details of a single Show
         /// </summary>
         /// <param name="showId">The ID of the show</param>
@@ -16,9 +22,10 @@ namespace SampleApi.Common.Data
         Show GetShowDetails(int showId);
 
         /// <summary>
-        /// Gets all shows
+        /// Gets the cast members of a single Show
         /// </summary>
-        /// <returns>A List of Show objects</returns>
-        List<Show> GetAllShows();
+        /// <param name="showId">The ID of the show</param>
+        /// <returns>A List of CastMembers</returns>
+        List<CastMember> GetCastMembers(int showId);
     }
 }
