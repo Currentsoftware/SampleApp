@@ -20,7 +20,8 @@
   </Words>
   <Acronyms>
     <CasingExceptions>
-      <Acronym>REST</Acronym> <!-- API -->
+      <Acronym>REST</Acronym>
+      <Acronym>BLL</Acronym>
     </CasingExceptions>
   </Acronyms>
 </Dictionary>

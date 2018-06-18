@@ -1,11 +1,12 @@
 ﻿using System;
+using SampleApi.Common.Contracts;
 
 namespace SampleApi.Common.Entities
 {
     /// <summary>
     /// A DTO that holds cast member information
     /// </summary>
-    public class CastMember
+    public class CastMember : ContractBase
     {
         /// <summary>
         /// Gets or sets the ID

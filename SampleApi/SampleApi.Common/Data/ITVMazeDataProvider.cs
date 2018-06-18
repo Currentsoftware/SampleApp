@@ -11,8 +11,9 @@ namespace SampleApi.Common.Data
         /// <summary>
         /// Gets all shows
         /// </summary>
+        /// <param name="page">The number of the page to get</param>
         /// <returns>A List of Show objects</returns>
-        List<Show> GetAllShows();
+        List<Show> GetShows(int page);
 
         /// <summary>
         /// Gets the details of a single Show

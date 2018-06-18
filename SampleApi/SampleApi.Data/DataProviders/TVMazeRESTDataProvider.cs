@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Net;
 using Newtonsoft.Json;
 using RestSharp;
+using SampleApi.Common;
 using SampleApi.Common.Data;
 using SampleApi.Common.Entities;
 using SampleApi.Data.Entities;
@@ -37,10 +39,13 @@ namespace SampleApi.Data.DataProviders
         /// <summary>
         /// Gets all shows
         /// </summary>
+        /// <param name="page">The number of the page to get</param>
         /// <returns>A List of Show objects</returns>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1804:RemoveUnusedLocals", MessageId = "response")]
-        public List<Show> GetAllShows()
+        public List<Show> GetShows(int page)
         {
+            this.restClient.BaseUrl = new System.Uri(baseUrl + "/shows?page=" + page.ToString(CultureInfo.InvariantCulture));
+
             var request = new RestRequest(Method.GET);
 
             request.AddHeader("User-Agent", userAgent);
@@ -69,6 +74,20 @@ namespace SampleApi.Data.DataProviders
             request.AddHeader("Cache-Control", "no-cache");
 
             IRestResponse response = this.restClient.Execute(request);
+
+            switch ((int)response.StatusCode)
+            {
+                case 404:
+                    return null;
+                case 429:
+                    throw new DataSourceOverloadException();
+                case 200:
+                    //do nothing
+                    break;
+                default:
+                    //better error handling required here
+                    return null;
+            }
 
             var showResponse = JsonConvert.DeserializeObject<ShowResponse>(response.Content);
 
