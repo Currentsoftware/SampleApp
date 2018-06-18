@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SampleApi.Common
+namespace SampleApi.Common.Exceptions
 {
     /// <summary>
     /// Thrown when the data source is getting too many requests

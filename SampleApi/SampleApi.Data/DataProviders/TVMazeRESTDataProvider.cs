@@ -7,6 +7,7 @@ using RestSharp;
 using SampleApi.Common;
 using SampleApi.Common.Data;
 using SampleApi.Common.Entities;
+using SampleApi.Common.Exceptions;
 using SampleApi.Data.Entities;
 
 namespace SampleApi.Data.DataProviders
